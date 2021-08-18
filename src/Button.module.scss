@@ -1,0 +1,27 @@
+.btn {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background: rgb(199, 23, 23);
+  color: white;
+  border: none;
+  &:hover {
+    background: rgb(228, 49, 49);
+  }
+}
+
+.test {
+  width: 300px;
+  height: 100px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background: rgb(41, 133, 136);
+  color: rgb(252, 158, 255);
+  border: none;
+  &:hover {
+    background: rgb(121, 86, 86);
+  }
+}

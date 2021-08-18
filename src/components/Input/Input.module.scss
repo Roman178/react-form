@@ -1,0 +1,20 @@
+.input-box {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+.invalid {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  color: red;
+  transition: all 0.1s linear;
+}
+
+.valid {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.1s linear;
+}
