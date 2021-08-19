@@ -1,28 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Input.module.scss";
 
-function Input(props) {
-  const [isValid, setValid] = useState(null);
+const Input = function (props) {
+  const [isValid, setValid] = useState(undefined);
   const [value, setValue] = useState("");
-
-  const inputEl = useRef(false);
 
   const checkValid = (evt) => {
     setValid(evt.target.validity.valid);
-    props.addValid(isValid);
   };
 
   const handleChange = (evt) => {
     setValid(evt.target.validity.valid);
     setValue(evt.target.value);
-    props.addValid(isValid);
   };
 
   return (
     <div className={styles["input-box"]}>
       <label htmlFor={props.type}>{props.name}</label>
       <input
-        ref={inputEl}
+        ref={props.refInput}
         required
         placeholder={props.name}
         id={props.type}
@@ -36,15 +32,8 @@ function Input(props) {
       <span className={isValid === false ? styles["invalid"] : styles["valid"]}>
         {props.invalidMsg}
       </span>
-      <button
-        onClick={() => {
-          inputEl.current.focus();
-        }}
-      >
-        Test
-      </button>
     </div>
   );
-}
+};
 
 export default Input;
