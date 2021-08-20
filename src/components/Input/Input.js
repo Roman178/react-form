@@ -5,6 +5,10 @@ const Input = function (props) {
   const [isValid, setValid] = useState(undefined);
   const [value, setValue] = useState("");
 
+  useEffect(() => {
+    props.passValid(isValid, props.id);
+  }, [isValid]);
+
   const checkValid = (evt) => {
     setValid(evt.target.validity.valid);
   };
@@ -15,13 +19,13 @@ const Input = function (props) {
   };
 
   return (
-    <div className={styles["input-box"]}>
-      <label htmlFor={props.type}>{props.name}</label>
+    <label htmlFor={props.type} className={styles["input-box"]}>
+      {props.name}
       <input
         ref={props.refInput}
-        required
+        required={props.required}
         placeholder={props.name}
-        id={props.type}
+        id={props.id}
         type={props.type}
         onFocus={checkValid}
         onBlur={checkValid}
@@ -32,7 +36,7 @@ const Input = function (props) {
       <span className={isValid === false ? styles["invalid"] : styles["valid"]}>
         {props.invalidMsg}
       </span>
-    </div>
+    </label>
   );
 };
 
