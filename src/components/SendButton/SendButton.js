@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./SendButton.module.scss";
 
 class SendButton extends React.Component {
   constructor(props) {
@@ -6,9 +7,17 @@ class SendButton extends React.Component {
   }
 
   render() {
-    const disabledBtn = <button disabled>Отправить</button>;
-    const enabledBtn = <button>Отправить</button>;
-    return disabledBtn;
+    return (
+      <button
+        className={
+          this.props.formIsValid ? styles["valid-btn"] : styles["invalid-btn"]
+        }
+        onClick={this.props.onClick}
+        type="submit"
+      >
+        Отправить
+      </button>
+    );
   }
 }
 

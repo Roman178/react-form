@@ -1,0 +1,23 @@
+.invalid-btn {
+  padding: 0;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  border-radius: 2px 0px 0px 2px;
+  background-color: #e8e8e8;
+  width: 343px;
+  min-height: 40px;
+  transition: all 0.1s linear;
+  cursor: pointer;
+}
+
+.valid-btn {
+  background-color: #1890ff;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 2px;
+  width: 343px;
+  min-height: 40px;
+  transition: all 0.1s linear;
+  cursor: pointer;
+}

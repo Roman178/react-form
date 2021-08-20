@@ -1,0 +1,27 @@
+.opened {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.wrapper {
+  background-color: #fff;
+}
+
+.btn {
+  background-color: #1890ff;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 2px;
+  width: 343px;
+  min-height: 40px;
+  transition: all 0.1s linear;
+  cursor: pointer;
+}

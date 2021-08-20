@@ -12,3 +12,19 @@
   opacity: 0;
   transition: all 0.1s linear;
 }
+
+.hidden-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.hidden-input:disabled + .visible-input {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: 1px solid #1890ff;
+  box-sizing: border-box;
+}

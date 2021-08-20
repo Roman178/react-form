@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef, createRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Input from "../Input/Input";
 import FileInput from "../FileInput/FileInput";
 import RadioGroup from "../Radio/Radio";
 import Checkbox from "../Checkbox/Checkbox";
 import SendButton from "../SendButton/SendButton";
+import Popup from "../Popup/Popup";
 
 function Form(props) {
+  // Рефы нужны для вызова focus() у инпутов потомков.
   const inputName = useRef();
   const inputLastName = useRef();
   const inputEmail = useRef();
@@ -15,10 +17,25 @@ function Form(props) {
   const [validationsInputs, setValidationsInputs] = useState({});
   const [selectedRadio, setRadio] = useState("init");
   const [checkedBox, setCheckBox] = useState(false);
+  const [validForm, setValidForm] = useState(false);
+
+  useEffect(() => {
+    setValidForm(
+      Object.keys(validationsInputs).length > 3 &&
+        !Object.values(validationsInputs).includes(false) &&
+        selectedRadio !== "init" &&
+        !!selectedRadio &&
+        checkedBox
+    );
+  }, [validationsInputs, selectedRadio, checkedBox]);
 
   function checkForm() {
-    refsInputsArr.forEach((i) => i.current.focus());
-    if (selectedRadio === "init") setRadio("");
+    if (validForm) {
+      console.log("OK!");
+    } else {
+      refsInputsArr.forEach((i) => i.current.focus());
+      if (selectedRadio === "init") setRadio("");
+    }
   }
 
   function handleSelectedRadio(passedRadio) {
@@ -34,7 +51,7 @@ function Form(props) {
   }
 
   return (
-    <form onSubmit={(evt) => evt.preventDefault()} className="form">
+    <form onSubmit={(evt) => evt.preventDefault()} noValidate className="form">
       <fieldset>
         <legend>Личные данные</legend>
         <Input
@@ -92,12 +109,9 @@ function Form(props) {
         onChecked={handleCheckbox}
         textLabel="* Я согласен с политикой конфиденциальности"
       />
-      {/*  */}
-      <button type="button" onClick={checkForm}>
-        test
-      </button>
 
-      <SendButton />
+      <SendButton formIsValid={validForm} onClick={checkForm} />
+      <Popup />
     </form>
   );
 }
