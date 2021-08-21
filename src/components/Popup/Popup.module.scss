@@ -1,6 +1,8 @@
-.opened {
+.popup {
   position: fixed;
   display: flex;
+  opacity: 0;
+  visibility: hidden;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -8,6 +10,12 @@
   background-color: rgba(0, 0, 0, 0.4);
   min-height: 100vh;
   width: 100%;
+  transition: all 0.2s linear;
+}
+
+.opened {
+  opacity: 1;
+  visibility: visible;
 }
 
 .wrapper {
@@ -24,4 +32,9 @@
   min-height: 40px;
   transition: all 0.1s linear;
   cursor: pointer;
+}
+
+.title,
+.subtitle {
+  margin: 0;
 }

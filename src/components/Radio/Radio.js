@@ -8,6 +8,10 @@ function RadioGroup(props) {
     props.onSelectedRadio(selectedRadio);
   }, [selectedRadio]);
 
+  useEffect(() => {
+    if (props.formSent) setRadio("init");
+  }, [props.formSent]);
+
   function handleValueChange(evt) {
     setRadio(evt.target.value);
   }

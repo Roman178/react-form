@@ -11,6 +11,12 @@ class FileInput extends React.Component {
       fileName: "",
     };
   }
+
+  componentDidUpdate() {
+    if (this.props.formSent)
+      this.setState({ fileUploaded: false, fileName: "" });
+  }
+
   handleChange(evt) {
     if (this.fileInp.current.files.length > 0) {
       this.setState({

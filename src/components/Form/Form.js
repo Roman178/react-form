@@ -18,6 +18,8 @@ function Form(props) {
   const [selectedRadio, setRadio] = useState("init");
   const [checkedBox, setCheckBox] = useState(false);
   const [validForm, setValidForm] = useState(false);
+  const [formSent, setFormSent] = useState(false);
+  const [candidateName, setCandidateName] = useState("");
 
   useEffect(() => {
     setValidForm(
@@ -31,7 +33,7 @@ function Form(props) {
 
   function checkForm() {
     if (validForm) {
-      console.log("OK!");
+      setFormSent(true);
     } else {
       refsInputsArr.forEach((i) => i.current.focus());
       if (selectedRadio === "init") setRadio("");
@@ -50,6 +52,10 @@ function Form(props) {
     setValidationsInputs({ ...validationsInputs, [inputId]: isValid });
   }
 
+  function saveName(name) {
+    setCandidateName(name);
+  }
+
   return (
     <form onSubmit={(evt) => evt.preventDefault()} noValidate className="form">
       <fieldset>
@@ -59,10 +65,12 @@ function Form(props) {
           refInput={inputName}
           id="inputName"
           passValid={handleValidInputs}
+          passName={saveName}
           name="Имя"
           type="text"
           invalidMsg="В имени могут быть только буквы"
           pattern="^[a-zA-Zа-яёА-ЯЁ]+$"
+          formSent={formSent}
         />
         <Input
           required={true}
@@ -73,6 +81,7 @@ function Form(props) {
           type="text"
           invalidMsg="В имени могут быть только буквы"
           pattern="^[a-zA-Zа-яёА-ЯЁ]+$"
+          formSent={formSent}
         />
         <Input
           required={true}
@@ -82,6 +91,7 @@ function Form(props) {
           name="Электронная почта"
           type="email"
           invalidMsg="Пожалуйста, укажите электронную почту"
+          formSent={formSent}
         />
         <FileInput loadMsg="Загрузить резюме" />
       </fieldset>
@@ -92,6 +102,7 @@ function Form(props) {
         onSelectedRadio={handleSelectedRadio}
         title={"Пол"}
         data={["Мужской", "Женский"]}
+        formSent={formSent}
       />
       <fieldset>
         <legend>Github</legend>
@@ -103,15 +114,22 @@ function Form(props) {
           name="Вставьте ссылку на Github"
           type="url"
           invalidMsg="Проверьте правильность ссылки"
+          formSent={formSent}
         />
       </fieldset>
       <Checkbox
         onChecked={handleCheckbox}
         textLabel="* Я согласен с политикой конфиденциальности"
+        formSent={formSent}
       />
 
       <SendButton formIsValid={validForm} onClick={checkForm} />
-      <Popup />
+
+      <Popup
+        candidateName={candidateName}
+        formSent={formSent}
+        setInitialForm={() => setFormSent(false)}
+      />
     </form>
   );
 }

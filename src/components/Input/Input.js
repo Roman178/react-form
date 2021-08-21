@@ -9,6 +9,10 @@ const Input = function (props) {
     props.passValid(isValid, props.id);
   }, [isValid]);
 
+  useEffect(() => {
+    if (props.formSent) setValue("");
+  }, [props.formSent]);
+
   const checkValid = (evt) => {
     setValid(evt.target.validity.valid);
   };
@@ -16,6 +20,7 @@ const Input = function (props) {
   const handleChange = (evt) => {
     setValid(evt.target.validity.valid);
     setValue(evt.target.value);
+    if (props.id === "inputName") props.passName(evt.target.value);
   };
 
   return (
