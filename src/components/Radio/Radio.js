@@ -17,7 +17,7 @@ function RadioGroup(props) {
   }
 
   return (
-    <fieldset>
+    <fieldset className={styles["fieldset"]}>
       <legend>{props.title}</legend>
       <p
         className={

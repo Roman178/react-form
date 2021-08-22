@@ -25,8 +25,11 @@ const Input = function (props) {
 
   return (
     <label htmlFor={props.type} className={styles["input-box"]}>
-      {props.name}
+      {`${props.name} ${props.required ? "*" : null}`}
       <input
+        className={`${styles["input"]} ${
+          isValid === false ? styles["invalid-typing"] : ""
+        }`}
         ref={props.refInput}
         required={props.required}
         placeholder={props.name}

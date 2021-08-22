@@ -1,3 +1,5 @@
+@import "../../main-styles/mixins.scss";
+
 .invalid {
   display: block;
   visibility: visible;
@@ -27,4 +29,8 @@
   background: #ffffff;
   border: 1px solid #1890ff;
   box-sizing: border-box;
+}
+
+.fieldset {
+  @include reset-block;
 }

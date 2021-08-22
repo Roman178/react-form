@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./FileInput.module.scss";
+import plusIcon from "../../images/plus.svg";
+import closeFileIcon from "../../images/file-name-rm.svg";
+import paperClipIcon from "../../images/clip.svg";
 
 class FileInput extends React.Component {
   constructor(props) {
@@ -12,9 +15,12 @@ class FileInput extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    if (this.props.formSent)
-      this.setState({ fileUploaded: false, fileName: "" });
+  componentDidUpdate(prevProps) {
+    if (this.props.formSent === false && prevProps.formSent === true) {
+      this.setState((prevState, currProps) => {
+        return { fileUploaded: false, fileName: "" };
+      });
+    }
   }
 
   handleChange(evt) {
@@ -29,7 +35,10 @@ class FileInput extends React.Component {
   render() {
     const btnToLoad = (
       <label className={styles["btn"]}>
-        <p className={styles["btn-text"]}>{this.props.loadMsg}</p>
+        <div className={styles["btn-box"]}>
+          <img src={plusIcon} alt="Плюс" />
+          <p className={styles["btn-text"]}>Загрузить резюме</p>
+        </div>
         <input
           className={styles["file-input"]}
           onChange={this.handleChange}
@@ -39,7 +48,25 @@ class FileInput extends React.Component {
       </label>
     );
 
-    const uploadedFileName = <p>{this.state.fileName}</p>;
+    const uploadedFileName = (
+      <div className={styles["file-name-box"]}>
+        <img
+          className={styles["file-clip"]}
+          src={paperClipIcon}
+          alt="скрепка"
+        />
+        <p className={styles["file-name"]}>{this.state.fileName}</p>
+        <img
+          onClick={() =>
+            this.setState((prevState, currProps) => {
+              return { fileUploaded: false, fileName: "" };
+            })
+          }
+          src={closeFileIcon}
+          alt="Удалить файл"
+        />
+      </div>
+    );
 
     return this.state.fileUploaded ? uploadedFileName : btnToLoad;
   }

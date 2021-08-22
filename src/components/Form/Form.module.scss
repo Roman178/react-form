@@ -1,0 +1,19 @@
+@import "../../main-styles/mixins.scss";
+
+.form {
+  padding: 62px 16px 48px;
+}
+
+.title {
+  margin: 0 0 40px 0;
+  @include set-font(500, 40px, 95%, #262626);
+}
+
+.fieldset {
+  @include reset-block;
+}
+
+.fieldset-title {
+  @include set-font(600, 22px, 173%, #262626);
+  margin-bottom: 24px;
+}

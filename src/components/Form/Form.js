@@ -5,9 +5,10 @@ import RadioGroup from "../Radio/Radio";
 import Checkbox from "../Checkbox/Checkbox";
 import SendButton from "../SendButton/SendButton";
 import Popup from "../Popup/Popup";
+import styles from "./Form.module.scss";
 
 function Form(props) {
-  // Рефы нужны для вызова focus() у инпутов потомков.
+  // Рефы нужны для вызова focus() у инпутов.
   const inputName = useRef();
   const inputLastName = useRef();
   const inputEmail = useRef();
@@ -57,9 +58,14 @@ function Form(props) {
   }
 
   return (
-    <form onSubmit={(evt) => evt.preventDefault()} noValidate className="form">
-      <fieldset>
-        <legend>Личные данные</legend>
+    <form
+      onSubmit={(evt) => evt.preventDefault()}
+      noValidate
+      className={styles["form"]}
+    >
+      <h1 className={styles["title"]}>Анкета соискателя</h1>
+      <fieldset className={styles["fieldset"]}>
+        <legend className={styles["fieldset-title"]}>Личные данные</legend>
         <Input
           required={true}
           refInput={inputName}
@@ -93,7 +99,7 @@ function Form(props) {
           invalidMsg="Пожалуйста, укажите электронную почту"
           formSent={formSent}
         />
-        <FileInput loadMsg="Загрузить резюме" />
+        <FileInput formSent={formSent} />
       </fieldset>
 
       <RadioGroup
@@ -104,7 +110,7 @@ function Form(props) {
         data={["Мужской", "Женский"]}
         formSent={formSent}
       />
-      <fieldset>
+      <fieldset className={styles["fieldset"]}>
         <legend>Github</legend>
         <Input
           passValid={handleValidInputs}
@@ -117,11 +123,7 @@ function Form(props) {
           formSent={formSent}
         />
       </fieldset>
-      <Checkbox
-        onChecked={handleCheckbox}
-        textLabel="* Я согласен с политикой конфиденциальности"
-        formSent={formSent}
-      />
+      <Checkbox onChecked={handleCheckbox} formSent={formSent} />
 
       <SendButton formIsValid={validForm} onClick={checkForm} />
 

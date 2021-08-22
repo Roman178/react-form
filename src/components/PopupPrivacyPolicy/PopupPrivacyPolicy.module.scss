@@ -12,3 +12,23 @@
   width: 100%;
   transition: all 0.2s linear;
 }
+
+.opened {
+  opacity: 1;
+  visibility: visible;
+}
+
+.window {
+  width: 85%;
+  min-height: 576px;
+  background-color: #fff;
+}
+
+.title {
+  margin: 0;
+}
+
+.paragraph-box {
+  overflow-y: scroll;
+  height: 500px;
+}

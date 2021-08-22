@@ -1,0 +1,6 @@
+@import "./main-styles/mixins.scss";
+
+.app {
+  @include flex-center;
+  font-family: sans-serif;
+}

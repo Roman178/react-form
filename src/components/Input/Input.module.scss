@@ -1,18 +1,48 @@
+@import "../../main-styles/mixins.scss";
+
 .input-box {
+  @include set-font(400, 14px, 157%, #262626);
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
+  justify-content: space-between;
+  min-height: 88px;
+}
+
+.input {
+  @include reset-block;
+  @include set-font(400, 16px, 150%, #595959);
+  min-height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #d9d9d9;
+  padding: 8px 12px;
+  transition: all 0.1s linear;
+}
+.invalid-typing {
+  color: #f5222d;
+}
+.input::-webkit-input-placeholder {
+  @include set-font(400, 16px, 24px, #bfbfbf);
+}
+.input::-moz-placeholder {
+  @include set-font(400, 16px, 24px, #bfbfbf);
+}
+.input::-ms-input-placeholder {
+  @include set-font(400, 16px, 24px, #bfbfbf);
+}
+.input::placeholder {
+  @include set-font(400, 16px, 24px, #bfbfbf);
 }
 
 .invalid {
+  @include set-font(400, 14px, 157%, #f5222d);
   display: block;
   visibility: visible;
   opacity: 1;
-  color: red;
   transition: all 0.1s linear;
 }
 
 .valid {
+  @include set-font(400, 14px, 157%, #f5222d);
   display: block;
   visibility: hidden;
   opacity: 0;

@@ -1,0 +1,19 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin set-font($weight, $size, $lh, $color) {
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lh;
+  color: $color;
+}
+
+@mixin reset-block {
+  margin: 0;
+  padding: 0;
+  border: none;
+}

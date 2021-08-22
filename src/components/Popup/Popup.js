@@ -26,9 +26,9 @@ function Popup(props) {
     <div
       className={`${styles["popup"]} ${popupIsOpened ? styles["opened"] : ""}`}
     >
-      <div className={styles["wrapper"]}>
+      <div className={styles["window"]}>
         <div id="text-box" className={styles["text-box"]}>
-          <h1 className={styles["title"]}>Спасибо {props.candidateName}</h1>
+          <h2 className={styles["title"]}>Спасибо {props.candidateName}</h2>
           <p className={styles["subtitle"]}>Мы скоро свяжемся с вами</p>
         </div>
         <button onClick={closePopup} className={styles["btn"]}>

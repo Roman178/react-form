@@ -3,6 +3,7 @@ import PopupPrivacyPolicy from "../PopupPrivacyPolicy/PopupPrivacyPolicy";
 
 function Checkbox(props) {
   const [checked, setCheck] = useState(false);
+  const [privatePolicyIsOpened, setPrivacyPolicyIsOpened] = useState(false);
 
   useEffect(() => {
     props.onChecked(checked);
@@ -25,9 +26,16 @@ function Checkbox(props) {
           name=""
           id=""
         />
-        {props.textLabel}
+        * Я согласен с{" "}
+        <a onClick={() => setPrivacyPolicyIsOpened(true)}>
+          политикой конфиденциальности
+        </a>
       </label>
-      <PopupPrivacyPolicy />
+      <PopupPrivacyPolicy
+        agreePolicy={() => setCheck(true)}
+        closePopup={() => setPrivacyPolicyIsOpened(false)}
+        openedPopup={privatePolicyIsOpened}
+      />
     </div>
   );
 }

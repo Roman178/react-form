@@ -1,10 +1,11 @@
 import React from "react";
-import "./App.scss";
+import "./App.module.scss";
 import Form from "./components/Form/Form";
+import styles from "./App.module.scss";
 
 function App(props) {
   return (
-    <div className="App">
+    <div className={styles["app"]}>
       <Form />
     </div>
   );
