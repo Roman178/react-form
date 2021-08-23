@@ -13,7 +13,7 @@ function Form(props) {
   const inputLastName = useRef();
   const inputEmail = useRef();
   const inputUrl = useRef();
-  const refsInputsArr = [inputName, inputLastName, inputEmail, inputUrl];
+  const refsArr = [inputName, inputLastName, inputEmail, inputUrl];
 
   const [validationsInputs, setValidationsInputs] = useState({});
   const [selectedRadio, setRadio] = useState("init");
@@ -36,7 +36,7 @@ function Form(props) {
     if (validForm) {
       setFormSent(true);
     } else {
-      refsInputsArr.forEach((i) => i.current.focus());
+      refsArr.forEach((i) => i.current.focus());
       if (selectedRadio === "init") setRadio("");
       if (checkedBox === undefined) setCheckBox(false);
     }

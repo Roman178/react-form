@@ -1,16 +1,8 @@
+@import "../../main-styles/variables.scss";
+@import "../../main-styles/mixins.scss";
+
 .popup {
-  position: fixed;
-  display: flex;
-  opacity: 0;
-  visibility: hidden;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  min-height: 100vh;
-  width: 100%;
-  transition: all 0.2s linear;
+  @include create-popup;
 }
 
 .opened {
@@ -19,16 +11,69 @@
 }
 
 .window {
-  width: 85%;
+  position: relative;
+  width: 90.55%;
   min-height: 576px;
   background-color: #fff;
+  padding: 16px 16px 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+
+  @media screen and (min-width: 1024px) {
+    min-height: 85vh;
+    max-height: 800px;
+    max-width: 758px;
+    padding: 40px 40px 58px;
+  }
 }
 
 .title {
-  margin: 0;
+  margin: 0 0 32px;
+  @include set-font(700, 24px, 158%, $text-color);
+
+  @media screen and (min-width: 1024px) {
+    text-align: center;
+  }
 }
 
 .paragraph-box {
   overflow-y: scroll;
-  height: 500px;
+  height: 370px;
+
+  @media screen and (min-width: 1024px) {
+    height: 55vh;
+    max-height: 540px;
+  }
+}
+
+.btn-confirm {
+  @include primary-btn;
+}
+
+.p-title {
+  @include set-font(700, 20px, 190%, $text-color);
+  margin: 0;
+}
+
+.paragraph {
+  @include set-font(400, 20px, 190%, $text-color);
+  margin: 0;
+}
+
+.close-btn {
+  @include reset-block;
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  top: 16px;
+  right: 16px;
+
+  @media screen and (min-width: 650px) {
+    top: 40px;
+    right: 40px;
+  }
 }

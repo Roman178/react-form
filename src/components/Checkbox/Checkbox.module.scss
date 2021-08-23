@@ -1,3 +1,4 @@
+@import "../../main-styles/variables.scss";
 @import "../../main-styles/mixins.scss";
 
 .box {
@@ -19,7 +20,7 @@
 }
 
 .invalid {
-  @include set-font(400, 14px, 157%, #f5222d);
+  @include set-font(400, 14px, 157%, $error-color);
   display: block;
   visibility: visible;
   opacity: 1;
@@ -27,7 +28,7 @@
 }
 
 .valid {
-  @include set-font(400, 14px, 157%, #f5222d);
+  @include set-font(400, 14px, 157%, $error-color);
   display: block;
   visibility: hidden;
   opacity: 0;

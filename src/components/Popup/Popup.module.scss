@@ -1,16 +1,8 @@
+@import "../../main-styles/variables.scss";
+@import "../../main-styles/mixins.scss";
+
 .popup {
-  position: fixed;
-  display: flex;
-  opacity: 0;
-  visibility: hidden;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  min-height: 100vh;
-  width: 100%;
-  transition: all 0.2s linear;
+  @include create-popup;
 }
 
 .opened {
@@ -19,22 +11,53 @@
 }
 
 .window {
+  position: relative;
   background-color: #fff;
+  min-height: 204px;
+  box-sizing: border-box;
+  padding: 32px 16px 16px;
+  width: 90.55%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+
+  @media screen and (min-width: 650px) {
+    max-width: 547px;
+    padding: 40px 0;
+    min-height: 244px;
+  }
 }
 
 .btn {
-  background-color: #1890ff;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 2px;
-  width: 343px;
-  min-height: 40px;
-  transition: all 0.1s linear;
-  cursor: pointer;
+  @include primary-btn;
 }
 
 .title,
 .subtitle {
   margin: 0;
+}
+
+.title {
+  @include set-font(700, 24px, 158%, $text-color);
+  text-align: center;
+}
+
+.subtitle {
+  @include set-font(400, 20px, 190%, $text-color);
+}
+
+.close-btn {
+  @include reset-block;
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  top: 16px;
+  right: 16px;
+
+  @media screen and (min-width: 650px) {
+    top: 40px;
+    right: 40px;
+  }
 }

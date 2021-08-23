@@ -1,7 +1,8 @@
+@import "../../main-styles/variables.scss";
 @import "../../main-styles/mixins.scss";
 
 @mixin error-text {
-  @include set-font(400, 14px, 157%, #f5222d);
+  @include set-font(400, 14px, 157%, $error-color);
   visibility: visible;
   opacity: 1;
   transition: all 0.1s linear;
@@ -40,7 +41,7 @@
 }
 
 .legend {
-  @include set-font(600, 22px, 173%, #262626);
+  @include set-font(600, 22px, 173%, $text-color);
   margin-right: 8px;
 }
 

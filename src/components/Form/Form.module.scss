@@ -1,3 +1,4 @@
+@import "../../main-styles/variables.scss";
 @import "../../main-styles/mixins.scss";
 
 .form {
@@ -5,7 +6,7 @@
   max-width: 928px;
 
   @media screen and (min-width: 650px) {
-    padding: 120px 0 0;
+    padding: 120px 0 88px;
   }
   @media screen and (min-width: 1024px) {
     width: 100%;
@@ -14,7 +15,7 @@
 
 .title {
   margin: 0 0 40px 0;
-  @include set-font(500, 40px, 95%, #262626);
+  @include set-font(500, 40px, 95%, $text-color);
 }
 
 .fieldset {
@@ -29,6 +30,6 @@
 }
 
 .legend {
-  @include set-font(600, 22px, 173%, #262626);
+  @include set-font(600, 22px, 173%, $text-color);
   margin-bottom: 24px;
 }

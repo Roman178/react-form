@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Popup.module.scss";
+import closeBtn from "../../images/close.svg";
 
 function Popup(props) {
   const [popupIsOpened, setPopupOpened] = useState(false);
@@ -15,7 +16,11 @@ function Popup(props) {
   }, [props.formSent]);
 
   function closePopup(evt) {
-    if (evt.target.closest("#text-box")) {
+    if (
+      evt.target.closest("#popup-window") &&
+      evt.target.id !== "main-popup-btn" &&
+      evt.target.id !== "close-btn-icon"
+    ) {
       return;
     }
     props.setInitialForm();
@@ -26,13 +31,20 @@ function Popup(props) {
     <div
       className={`${styles["popup"]} ${popupIsOpened ? styles["opened"] : ""}`}
     >
-      <div className={styles["window"]}>
-        <div id="text-box" className={styles["text-box"]}>
-          <h2 className={styles["title"]}>Спасибо {props.candidateName}</h2>
+      <div id="popup-window" className={styles["window"]}>
+        <div className={styles["text-box"]}>
+          <h2 className={styles["title"]}>Спасибо {props.candidateName} !</h2>
           <p className={styles["subtitle"]}>Мы скоро свяжемся с вами</p>
         </div>
-        <button onClick={closePopup} className={styles["btn"]}>
+        <button
+          id="main-popup-btn"
+          onClick={closePopup}
+          className={styles["btn"]}
+        >
           Понятно
+        </button>
+        <button className={styles["close-btn"]}>
+          <img id="close-btn-icon" src={closeBtn} alt="закрыть окно"></img>
         </button>
       </div>
     </div>

@@ -1,7 +1,8 @@
+@import "../../main-styles/variables.scss";
 @import "../../main-styles/mixins.scss";
 
 .input-box {
-  @include set-font(400, 14px, 157%, #262626);
+  @include set-font(400, 14px, 157%, $text-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,10 +34,10 @@
   }
 }
 .invalid-typing {
-  color: #f5222d;
-  border: 1px solid #f5222d;
+  color: $error-color;
+  border: 1px solid $error-color;
   &:focus {
-    border: 1px solid #f5222d;
+    border: 1px solid $error-color;
     box-shadow: none;
   }
 }
@@ -54,16 +55,14 @@
 }
 
 .invalid {
-  @include set-font(400, 14px, 157%, #f5222d);
-  display: block;
+  @include set-font(400, 14px, 157%, $error-color);
   visibility: visible;
   opacity: 1;
   transition: all 0.1s linear;
 }
 
 .valid {
-  @include set-font(400, 14px, 157%, #f5222d);
-  display: block;
+  @include set-font(400, 14px, 157%, $error-color);
   visibility: hidden;
   opacity: 0;
   transition: all 0.1s linear;
