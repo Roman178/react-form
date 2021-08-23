@@ -50,21 +50,23 @@ class FileInput extends React.Component {
 
     const uploadedFileName = (
       <div className={styles["file-name-box"]}>
-        <img
-          className={styles["file-clip"]}
-          src={paperClipIcon}
-          alt="скрепка"
-        />
-        <p className={styles["file-name"]}>{this.state.fileName}</p>
-        <img
-          onClick={() =>
-            this.setState((prevState, currProps) => {
-              return { fileUploaded: false, fileName: "" };
-            })
-          }
-          src={closeFileIcon}
-          alt="Удалить файл"
-        />
+        <div className={styles["wrapper"]}>
+          <img
+            className={styles["file-clip"]}
+            src={paperClipIcon}
+            alt="скрепка"
+          />
+          <p className={styles["file-name"]}>{this.state.fileName}</p>
+          <img
+            onClick={() =>
+              this.setState((prevState, currProps) => {
+                return { fileUploaded: false, fileName: "" };
+              })
+            }
+            src={closeFileIcon}
+            alt="Удалить файл"
+          />
+        </div>
       </div>
     );
 

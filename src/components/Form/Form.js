@@ -17,7 +17,7 @@ function Form(props) {
 
   const [validationsInputs, setValidationsInputs] = useState({});
   const [selectedRadio, setRadio] = useState("init");
-  const [checkedBox, setCheckBox] = useState(false);
+  const [checkedBox, setCheckBox] = useState(undefined);
   const [validForm, setValidForm] = useState(false);
   const [formSent, setFormSent] = useState(false);
   const [candidateName, setCandidateName] = useState("");
@@ -38,6 +38,7 @@ function Form(props) {
     } else {
       refsInputsArr.forEach((i) => i.current.focus());
       if (selectedRadio === "init") setRadio("");
+      if (checkedBox === undefined) setCheckBox(false);
     }
   }
 
@@ -65,7 +66,7 @@ function Form(props) {
     >
       <h1 className={styles["title"]}>Анкета соискателя</h1>
       <fieldset className={styles["fieldset"]}>
-        <legend className={styles["fieldset-title"]}>Личные данные</legend>
+        <legend className={styles["legend"]}>Личные данные</legend>
         <Input
           required={true}
           refInput={inputName}
@@ -103,7 +104,7 @@ function Form(props) {
       </fieldset>
 
       <RadioGroup
-        invalidMsg="Укажите пол"
+        invalidMsg="укажите пол"
         isRadioBtnSelected={selectedRadio}
         onSelectedRadio={handleSelectedRadio}
         title={"Пол"}
@@ -111,7 +112,7 @@ function Form(props) {
         formSent={formSent}
       />
       <fieldset className={styles["fieldset"]}>
-        <legend>Github</legend>
+        <legend className={styles["legend"]}>Github</legend>
         <Input
           passValid={handleValidInputs}
           required={false}
@@ -123,10 +124,13 @@ function Form(props) {
           formSent={formSent}
         />
       </fieldset>
-      <Checkbox onChecked={handleCheckbox} formSent={formSent} />
-
+      <Checkbox
+        invalidMsg="Требуется Ваше согласие"
+        onChecked={handleCheckbox}
+        checkFromParent={checkedBox}
+        formSent={formSent}
+      />
       <SendButton formIsValid={validForm} onClick={checkForm} />
-
       <Popup
         candidateName={candidateName}
         formSent={formSent}

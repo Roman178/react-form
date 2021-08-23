@@ -18,18 +18,21 @@ function RadioGroup(props) {
 
   return (
     <fieldset className={styles["fieldset"]}>
-      <legend>{props.title}</legend>
-      <p
-        className={
-          props.isRadioBtnSelected ? styles["valid"] : styles["invalid"]
-        }
-      >
-        {props.invalidMsg}
-      </p>
+      <div className={styles["wrapper"]}>
+        <legend className={styles["legend"]}>{`${props.title} *`}</legend>
+        <p
+          className={
+            props.isRadioBtnSelected ? styles["valid"] : styles["invalid"]
+          }
+        >
+          {props.invalidMsg}
+        </p>
+      </div>
       {props.data.map((d) => {
         return (
-          <label key={d} htmlFor={d}>
+          <label className={styles["label"]} key={d} htmlFor={d}>
             <input
+              className={styles["radio-btn"]}
               checked={selectedRadio === d}
               value={d}
               onChange={handleValueChange}

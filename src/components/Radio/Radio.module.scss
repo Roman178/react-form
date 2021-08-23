@@ -1,18 +1,21 @@
 @import "../../main-styles/mixins.scss";
 
-.invalid {
-  display: block;
+@mixin error-text {
+  @include set-font(400, 14px, 157%, #f5222d);
   visibility: visible;
   opacity: 1;
-  color: red;
   transition: all 0.1s linear;
+  margin: 0;
+}
+
+.invalid {
+  @include error-text;
 }
 
 .valid {
-  display: block;
+  @include error-text;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.1s linear;
 }
 
 .hidden-input {
@@ -33,4 +36,28 @@
 
 .fieldset {
   @include reset-block;
+  margin: 40px 0;
+}
+
+.legend {
+  @include set-font(600, 22px, 173%, #262626);
+  margin-right: 8px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.label {
+  @include set-font(400, 14px, 157%, #595959);
+  margin-right: 40px;
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.radio-btn {
+  margin-right: 8px;
 }

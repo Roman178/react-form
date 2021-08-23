@@ -25,7 +25,7 @@ const Input = function (props) {
 
   return (
     <label htmlFor={props.type} className={styles["input-box"]}>
-      {`${props.name} ${props.required ? "*" : null}`}
+      {`${props.name} ${props.required ? "*" : ""}`}
       <input
         className={`${styles["input"]} ${
           isValid === false ? styles["invalid-typing"] : ""

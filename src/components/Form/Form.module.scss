@@ -2,6 +2,14 @@
 
 .form {
   padding: 62px 16px 48px;
+  max-width: 928px;
+
+  @media screen and (min-width: 650px) {
+    padding: 120px 0 0;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+  }
 }
 
 .title {
@@ -11,9 +19,16 @@
 
 .fieldset {
   @include reset-block;
+
+  @media screen and (min-width: 650px) {
+    max-width: 592px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
-.fieldset-title {
+.legend {
   @include set-font(600, 22px, 173%, #262626);
   margin-bottom: 24px;
 }

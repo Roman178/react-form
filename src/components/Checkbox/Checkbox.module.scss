@@ -1,0 +1,35 @@
+@import "../../main-styles/mixins.scss";
+
+.box {
+  margin: 24px 0 20px;
+}
+
+.label {
+  @include set-font(400, 14px, 157%, #595959);
+}
+
+.link {
+  @include set-font(400, 14px, 157%, #2f80ed);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.checkbox-btn {
+  margin-right: 8px;
+}
+
+.invalid {
+  @include set-font(400, 14px, 157%, #f5222d);
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.1s linear;
+}
+
+.valid {
+  @include set-font(400, 14px, 157%, #f5222d);
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.1s linear;
+}
