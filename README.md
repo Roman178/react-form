@@ -2,7 +2,7 @@
 
 ### Deploy:
 
-Проект развернут здесь [здесь](https://roman178.github.io/react-form/).
+Проект развернут [здесь](https://roman178.github.io/react-form/).
 
 ### Стек:
 
